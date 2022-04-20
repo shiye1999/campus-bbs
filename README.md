@@ -11,21 +11,21 @@
 
 **后端**
 
+编译器 Intellij IDEA
+
+测试 Chrome Postman
+
 spring
 
 spring boot
 
-
-
-VS code
-
-
-
-Intellij IDEA
-
-
+mybatis-plus
 
 **前端**
+
+编译器 VS code
+
+测试 Chrome
 
 npm
 
@@ -48,13 +48,11 @@ vue
 
 **数据库**
 
+编译器 Data Grip
+
 Mybatis
 
 Mysql
-
-
-
-Data Grip
 
 
 
@@ -69,7 +67,7 @@ npm run serve
 后端
 
 ```
-运行就行
+IDEA运行
 ```
 
 

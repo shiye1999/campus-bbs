@@ -25,11 +25,3 @@ public interface UserMapper extends BaseMapper<User> {
     Integer selectTotal();
 
 }
-/*
-{
-    "authority":"1"
-    "school_number":"123456"
-    "username":"test1"
-    "password":"123456"
-}
- */
