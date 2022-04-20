@@ -1,14 +1,10 @@
 <template>
-    <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-        :unique-opened="true" :collapse="false">
-        <el-menu-item v-for="item in menu" :key="item.path">
-            <router-link :to="item.path">
-                <el-menu-item :index="subIndex">
-                    <span class="item">
-                        {{item.label}}
-                    </span>
-                </el-menu-item>
-            </router-link>
+    <el-menu default-active="$route.path" class="el-menu-vertical-demo" router @open="handleOpen" @close="handleClose"
+        :unique-opened="true" :collapse="false" style="text-align:center">
+        <el-menu-item @click=clikcMenu(item) v-for="item in menu" :index="item.path" :key="item.path">
+            <template slot="title">
+                <span>{{item.label}}</span>
+            </template>
         </el-menu-item>
     </el-menu>
 </template>
@@ -17,8 +13,7 @@
     export default {
         data() {
             return {
-                menu: [
-                    {
+                menu: [{
                         path: '/home/notice',
                         name: 'notice',
                         label: '首页',
@@ -51,16 +46,21 @@
             },
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
+            },
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            clickMenu(item) {
+                this.$router.push({
+                    name: item.name,
+                    activeIndex: item.path
+                })
             }
         }
     }
 </script>
 
 <style lang="less" scoped>
-    .subItem {
-        color: #c0c0c0;
-    }
-
     a {
         text-decoration: none;
     }

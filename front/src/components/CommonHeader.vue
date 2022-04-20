@@ -7,10 +7,8 @@
             </template>
         </el-menu-item>
         <el-menu-item @click=clikcMenu(item) v-for="item in menu" :index="item.path" :key="item.path">
-            <route-link to="item.path">
-                <i class="'el-icon-' + item.icon"></i>
-                <span slot="title">{{item.label}}</span>
-            </route-link>
+            <i class="'el-icon-' + item.icon"></i>
+            <span slot="title">{{item.label}}</span>
         </el-menu-item>
         <div class="r-content">
             <!-- 搜索栏 -->
@@ -48,8 +46,7 @@
                 activeIndex: '/home',
                 logoImg: require("../assets/logo.png"),
                 userImg: require("../assets/user.png"),
-                menu: [
-                    {
+                menu: [{
                         path: '/home/notice',
                         name: 'home',
                         label: '首页',
@@ -76,7 +73,7 @@
             },
             clickMenu(item) {
                 this.$router.push({
-                    name: item.name,
+                    // name: item.name,
                     activeIndex: item.path
                 })
             }
@@ -96,7 +93,7 @@
 
         .user {
             float: right;
-            margin:10px 40px 0 50px;
+            margin: 10px 40px 0 50px;
             width: 40px;
             height: 40px;
             border-radius: 50%;

@@ -1,5 +1,6 @@
 <template>
-    <el-menu default-active="$route.path" class="userMenu" router @open="handleOpen" @close="handleClose">
+    <el-menu default-active="$route.path" class="el-menu-vertical-demo" router @open="handleOpen" @close="handleClose"
+        :unique-opened="true" :collapse="false" style="text-align:center">
         <el-menu-item @click=clikcMenu(item) v-for="item in menu" :index="item.path" :key="item.path">
             <template slot="title">
                 <span>{{item.label}}</span>
@@ -50,3 +51,13 @@
         }
     }
 </script>
+
+<style lang="less" scoped>
+    a {
+        text-decoration: none;
+    }
+
+    .router-link-active {
+        text-decoration: none;
+    }
+</style>
