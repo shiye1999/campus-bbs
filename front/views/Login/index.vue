@@ -27,7 +27,7 @@
                 </el-form-item>
                 <el-form-item style="margin-bottom: 60px">
                     <el-button style="width: 100%" type="primary" :loading="loading"
-                        @click.native.prevent="handleRegister">登录</el-button>
+                        @click.native.prevent="handleLogin">登录</el-button>
                 </el-form-item>
             </el-form>
             <div class="register">
@@ -58,7 +58,7 @@
                     this.pwdType = "password";
                 }
             },
-            handleRegister() {
+            handleLogin() {
                 this.$router.push({
                     path: "/home/notice",
                 });

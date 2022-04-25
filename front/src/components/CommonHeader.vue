@@ -73,7 +73,7 @@
             },
             clickMenu(item) {
                 this.$router.push({
-                    // name: item.name,
+                    name: item.name,
                     activeIndex: item.path
                 })
             }

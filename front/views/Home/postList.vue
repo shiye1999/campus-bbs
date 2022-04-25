@@ -33,13 +33,19 @@
         
         methods: {
             load(){
-            //请求分页查询数据
-            fetch("http://localhost:8081/user/page?pageNum="+this.pageNum+"&pageSize=8")
-                .then(res => res.json()).then(res => {
-                    console.log(res)
-                    this.tableData = res.data
-                    this.total = res.total
-                })
+                //请求分页查询数据
+                this.request.get("/user/page",{
+                    params:{
+                        pageNum:1,
+                        pageSize:8,
+                    }
+                }).then(
+                    res =>{
+                        console.log(res)
+                        this.tableData=res.records
+                        this.total=res.total
+                    }
+                )
             },
             handleCurrentChange(pageNum) {
                 this.pageNum=pageNum

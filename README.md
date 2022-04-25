@@ -3,9 +3,16 @@
 **TODO**
 
 * 帖子列表（加分页器） 完成
-* 水楼和回复界面（加返回和分页器）
+* 水楼和回复界面（加返回和分页器）完成
+* 连接前后端 完成
+* 代码生成器 完成
+* 丰富其他增删改查
+* 添加用户注册和认证
+* 添加管理员功能
+* 实现搜索
+* 实现粉丝功能
+* 私信功能 （不必要）
 * 把表格和楼层弄成斑马纹  （不必要）
-* 连接前后端
 
 
 
@@ -379,3 +386,67 @@ springboot中的entity实体中的属性，需要把数据库表单中下划线_
 github毕业设计项目的的token
 
 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
+
+
+
+大概知道了增删改查和显示.......
+
+接口知道这么调用了.........
+
+我好费阿.............
+
+
+
+```
+package com.csp.back.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.csp.back.entity.User;
+import com.csp.back.mapper.UserMapper;
+import com.csp.back.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/user")
+public class UserController {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private UserService userService;
+
+    //新增或修改
+    @PostMapping
+    public boolean save(@RequestBody User user) {
+        return userService.saveUser(user);
+    }
+
+    @GetMapping
+    public List<User> findAll() {
+        return userService.list();
+    }
+
+    //带过滤器的分页查询
+    @GetMapping("/page")
+    public IPage<User> finPage(@RequestParam Integer pageNum,
+                                       @RequestParam Integer pageSize) {
+        IPage<User> page = new Page<>(pageNum,pageSize);
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+
+        return userService.page(page,queryWrapper);
+    }
+
+    @DeleteMapping()
+    public boolean delete(@PathVariable Integer id) {
+        return userService.removeById(id);
+    }
+}
+
+```
+
