@@ -1,5 +1,6 @@
 package com.csp.back.service;
 
+import com.csp.back.controller.dto.UserDTO;
 import com.csp.back.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
+    UserDTO login(UserDTO user);
+
+    User register(UserDTO user);
 }

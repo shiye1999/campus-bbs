@@ -6,22 +6,17 @@ Vue.use(VuRouter)
 const routes = [
     {
         path: '/',
-        component: () => import("../views/Login/index.vue"),
+        component: () => import("../views/Login/login.vue"),
     },
     {
         path: '/login',
         name: 'Login',
-        component: () => import("../views/Login/index.vue"),
+        component: () => import("../views/Login/login.vue"),
     },
     {
         path: '/register',
         name: 'register',
         component: () => import("../views/Login/register.vue"),
-    },
-    {
-        path: '/fail',
-        component: () => import("../views/Login/fail.vue"),
-        hidden: true
     },
     {
         path: '/help',

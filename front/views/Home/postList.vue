@@ -10,7 +10,7 @@
                     <el-table-column prop="username" label="名字"></el-table-column>
                     <el-table-column prop="createTime" label="创建时间"></el-table-column>
                 </el-table>
-                <el-pagination background layout="total,prev, pager, next" page-size="8" :current-page="pageNum"
+                <el-pagination background layout="total,prev, pager, next" page-size=8 :current-page="pageNum"
                     :total="total" @current-change="handleCurrentChange">
                 </el-pagination>
             </el-card>

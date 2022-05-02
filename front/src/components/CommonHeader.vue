@@ -28,9 +28,7 @@
                         </router-link>
                     </el-dropdown-item>
                     <el-dropdown-item>
-                        <router-link to="/">
-                            退出
-                        </router-link>
+                        <span @click="logout">退出</span>
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -46,6 +44,7 @@
                 activeIndex: '/home',
                 logoImg: require("../assets/logo.png"),
                 userImg: require("../assets/user.png"),
+                user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")):{},
                 menu: [{
                         path: '/home/notice',
                         name: 'home',
@@ -76,6 +75,11 @@
                     name: item.name,
                     activeIndex: item.path
                 })
+            },
+            logout(){
+                this.$router.push("/login")
+                localStorage.removeItem("user")
+                this.$message.success("退出成功")
             }
         }
     }

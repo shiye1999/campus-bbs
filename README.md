@@ -2,15 +2,20 @@
 
 **TODO**
 
+* 前端基本框架 完成
+* 后端基本框架 完成
 * 帖子列表（加分页器） 完成
 * 水楼和回复界面（加返回和分页器）完成
 * 连接前后端 完成
 * 代码生成器 完成
-* 丰富其他增删改查
-* 添加用户注册和认证
-* 添加管理员功能
+* 上云 完成
+* 实现注册
+* 实现用户专业认证
+* 添加管理员相关界面
+* 添加管理员相关功能
 * 实现搜索
 * 实现粉丝功能
+* 实现动态通知
 * 私信功能 （不必要）
 * 把表格和楼层弄成斑马纹  （不必要）
 
@@ -181,8 +186,22 @@ comment：
 
 relation：
 
-* up
-* 粉丝
+* up的ID
+* 粉丝的ID
+
+
+
+（需要新增）notice：
+
+* up的ID
+
+* 粉丝的ID
+
+* 帖子ID
+
+* 回复的ID
+
+  （样例，可以弄成表格哈哈）xx在xx帖子中发表了评论xx
 
 
 
@@ -196,9 +215,11 @@ post_comment（一对多）
 
 section_post（一对多）
 
-好像没了
+notice_user（一对一）
 
+notice_post（一对一）
 
+notice_comment（一对一）
 
 
 
@@ -218,11 +239,9 @@ section_post（一对多）
 
 
 
-vue 传递参数
+vue 传递参数 （已经知道）
 
 https://blog.csdn.net/tianxintiandisheng/article/details/82463883
-
-
 
 
 
@@ -269,8 +288,6 @@ Are modern tools/equipment/software used in the design / lab methodology indicat
 Does each table/figure/chart stand on its own, clear and self-explanatory?
 How was the raw data summarised? Descriptive statistics? Content analysis? Other?
 Are there any analyses or explanation behind any unforeseen results?
-
-
 
 
 
@@ -340,16 +357,6 @@ Are there any analyses or explanation behind any unforeseen results?
 
 
 
-
-
-
-
-
-
-
-
-
-
 * 绪论
   * 背景和目的
   * 调研
@@ -377,6 +384,8 @@ postman测试CRUD
 
 错误码500是sql语句出错，后端项目会停止。
 
+错误码405是前端错误，后端项目不会停止。
+
 
 
 springboot中的entity实体中的属性，需要把数据库表单中下划线_变成驼峰规则，这样命名的变量才可以被识别.......（日了狗了）
@@ -389,64 +398,91 @@ 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
 
 
 
-大概知道了增删改查和显示.......
+**云服务器**
 
-接口知道这么调用了.........
+腾讯云轻量 一年
 
-我好费阿.............
+操作系统 centOS 7.6 好像是linux
+
+用户名 root
+
+密码 csp1412178?
+
+域名 csp22.club 一年
+
+公网IP 43.138.166.217
 
 
 
-```
-package com.csp.back.controller;
+信息模板申请完成
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.csp.back.entity.User;
-import com.csp.back.mapper.UserMapper;
-import com.csp.back.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+域名审核中
 
-import java.util.List;
+记得把身份证带过来 等八点上传 已上传
 
-@RestController
-@RequestMapping("/user")
-public class UserController {
+等域名注册三天后才能备案......还要等好久？当博客用算了.....
 
-    @Autowired
-    private UserMapper userMapper;
 
-    @Autowired
-    private UserService userService;
 
-    //新增或修改
-    @PostMapping
-    public boolean save(@RequestBody User user) {
-        return userService.saveUser(user);
-    }
 
-    @GetMapping
-    public List<User> findAll() {
-        return userService.list();
-    }
 
-    //带过滤器的分页查询
-    @GetMapping("/page")
-    public IPage<User> finPage(@RequestParam Integer pageNum,
-                                       @RequestParam Integer pageSize) {
-        IPage<User> page = new Page<>(pageNum,pageSize);
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+docker
 
-        return userService.page(page,queryWrapper);
-    }
-
-    @DeleteMapping()
-    public boolean delete(@PathVariable Integer id) {
-        return userService.removeById(id);
-    }
-}
+一堆命令，不是很好记
 
 ```
+//跑mysql
+docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+//执行docker，docker ps查看进程号
+docker exec -it e7f8ffddae76 /bin/bash
+//进入mysql
+mysql -uroot -proot
+//设置密码
+ALTER USER 'root'@'%' IDENTIFIED BY '123456';
+```
 
+
+
+本地可以跑，云服务器不行...
+
+```
+<dependency>
+	<groupId>mysql</groupId>
+	<artifactId>mysql-connector-java</artifactId>
+	<scope>8.0.13</scope>
+</dependency>
+```
+
+去掉
+
+```
+<scope>8.0.13</scope>
+```
+
+就能跑了
+
+
+
+
+
+**todolist**
+
+用包装类Result封装后端返回数据并修改前端。
+
+前后端都要做检验。
+
+优秀呀csp
+
+
+
+
+
+注册测试
+
+11811212
+
+user9
+
+123456
+
+123456
