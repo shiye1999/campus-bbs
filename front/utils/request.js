@@ -1,6 +1,9 @@
 import axios from 'axios'
+import ElementUI from 'element-ui';
+import { serverIp } from '../public/config';
 
 const request = axios.create({
+    // baseURL: 'http://43.138.166.217:8081', // 注意！！ 这里是全局统一加上了 后端接口前缀 前缀，后端必须进行跨域配置！
     baseURL: 'http://localhost:8081', // 注意！！ 这里是全局统一加上了 后端接口前缀 前缀，后端必须进行跨域配置！
     timeout: 5000
 })
@@ -31,6 +34,15 @@ request.interceptors.response.use(
         // 兼容服务端返回的字符串数据
         if (typeof res === 'string') {
             res = res ? JSON.parse(res) : res
+        }
+        // 没登录就敢进来？
+        if (res.code === '401'){
+            ElementUI.Message({
+                message:res.msg,
+                type:'error'
+            })
+            // window.location.href ="http://43.138.166.217:8080/login"
+            window.location.href ="http://localhost:8080/login"
         }
         return res;
     },

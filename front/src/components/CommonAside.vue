@@ -32,9 +32,9 @@
                         icon: '',
                     },
                     {
-                        path: '/home/test',
-                        name: 'test',
-                        label: '测试页面',
+                        path: '/home/searchList',
+                        name: 'searchList',
+                        label: '搜索',
                         icon: '',
                     },
                 ]
@@ -51,11 +51,14 @@
                 console.log(key, keyPath);
             },
             clickMenu(item) {
+                this.$emit("refreshSection",item.name)
+                
                 this.$router.push({
                     name: item.name,
                     activeIndex: item.path
                 })
-            }
+            },
+            
         }
     }
 </script>

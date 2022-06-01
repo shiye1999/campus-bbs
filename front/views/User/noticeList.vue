@@ -22,7 +22,6 @@
                     type: "类型",
                     postName: "帖子名字",
                     region: "板块",
-                    section: "分区",
                     time: "发表时间",
                 },
                 tableData: [{
@@ -32,7 +31,6 @@
                     postName: "帖子名字",
                     postLink: "帖子链接",
                     region: "板块",
-                    section: "分区",
                     time: "2022/3/3",
                 }]
             }

@@ -1,7 +1,7 @@
 <template>
     <el-menu default-active="$route.path" class="el-menu-vertical-demo" router @open="handleOpen" @close="handleClose"
         :unique-opened="true" :collapse="false" style="text-align:center">
-        <el-menu-item @click=clikcMenu(item) v-for="item in menu" :index="item.path" :key="item.path">
+        <el-menu-item @click=clickMenu(item) v-for="item in menu" :index="item.path" :key="item.path">
             <template slot="title">
                 <span>{{item.label}}</span>
             </template>
@@ -32,10 +32,19 @@
                         path: '/user/fanList',
                         name: 'fanList',
                         label: '粉丝列表',
-                    }
-                ]
+                    },
+                    // {
+                    //     path: '/user/controlList',
+                    //     name: 'controlList',
+                    //     label: '管理列表',
+                    // }
+                ],
+                authority:1
             }
         },
+        // created(){
+            
+        // },
         methods: {
             handleOpen(key, keyPath) {
                 console.log(key, keyPath);

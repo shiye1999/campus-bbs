@@ -1,14 +1,19 @@
 <template>
     <el-container style="height:100%">
         <el-header>
-            <common-header></common-header>
+            <common-header @refreshSearch="getResult($event)"></common-header>
         </el-header>
         <el-container>
             <el-aside width="200px">
-                <common-aside></common-aside>
+                <common-aside @refreshSection="getSection($event)"></common-aside>
             </el-aside>
             <el-main>
-                <router-view></router-view>
+                <router-view 
+                :postListData="postListData" 
+                :commentListData="commentListData" 
+                :userListData="userListData"
+                @refreshSearch="getResult($event)">
+                </router-view>
             </el-main>
         </el-container>
     </el-container>
@@ -22,8 +27,53 @@
             CommonAside,
             CommonHeader,
         },
+        
         data() {
-            return {}
+            return {
+                postListData: [],
+                userListData : [],
+                commentListData:[],
+                total: 0,
+                pageNum: 1,
+                pageSize: 8,
+            }
+        },
+        methods:{
+            getSection(sectionName){
+                this.request.get("/section/" + sectionName).then(
+                    res =>{
+                        localStorage.setItem('section',JSON.stringify(res.data))
+                        this.request.get("/post/page",{
+                            params:{
+                                // pageNum:this.pageNum,
+                                // pageSize:this.pageSize,
+                                sectionId:JSON.parse(localStorage.getItem("section")).id
+                            }
+                        }).then(
+                            res =>{
+                                this.postListData=[]
+                                for(var i = 0; i < res.data.postList.length; i++){
+                                    this.postListData.push(res.data.postList[i])
+                                    this.postListData[i].creatorName = res.data.userList[i].username
+                                }
+                                // this.postListData = res.data.postList
+                                // this.userListData = res.data.userList
+                                this.total=res.data.total
+                            }
+                        )
+                    }
+                )
+                this.postListData.forEach(element => {
+                    this.request.get("/user/"+element.creatorId).then(
+                        res => {
+                            element.creatorName = res.data.username
+                        }
+                    )
+                })
+            },
+            getResult(postName){
+
+            }
         }
     }
 </script>

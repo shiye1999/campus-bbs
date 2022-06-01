@@ -21,7 +21,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-         <!--mybatis -->
+         <!--mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>

@@ -9,15 +9,15 @@
 * 连接前后端 完成
 * 代码生成器 完成
 * 上云 完成
-* 实现注册
-* 实现用户专业认证
-* 添加管理员相关界面
-* 添加管理员相关功能
-* 实现搜索
-* 实现粉丝功能
-* 实现动态通知
-* 私信功能 （不必要）
-* 把表格和楼层弄成斑马纹  （不必要）
+* 实现注册 完成
+* 实现粉丝关注列表 完成
+* 实现用户专业认证 完成
+* 添加管理员相关界面 完成
+* 添加管理员相关功能 完成
+* 实现搜索 完成
+* 实现发帖 完成
+* 实现动态通知 完成
+* 把表格和楼层弄成斑马纹  完成 
 
 
 
@@ -27,11 +27,22 @@
 
 测试 Chrome Postman
 
-spring
+工具库
 
-spring boot
+* spring
 
-mybatis-plus
+* spring boot
+* maven
+* mybatis
+
+* mybatis-plus
+* swagger
+* hutool
+* ......
+
+
+
+
 
 **前端**
 
@@ -39,22 +50,19 @@ mybatis-plus
 
 测试 Chrome
 
-npm
+工具库
 
-yarn
+* npm
 
-node
+* yarn
 
-vue
+* node
 
 * element-ui
 * vue-cli
-* less
-* less-loader
 * vue-router
 * axios
-* vuex
-* （不知道有没有漏）
+* ......
 
 
 
@@ -62,9 +70,7 @@ vue
 
 编译器 Data Grip
 
-Mybatis
-
-Mysql
+数据库管理 Mysql
 
 
 
@@ -80,6 +86,12 @@ npm run serve
 
 ```
 IDEA运行
+```
+
+数据库
+
+```
+运行databse.sql
 ```
 
 
@@ -111,12 +123,8 @@ IDEA运行
 
 * 删除帖子
 * 封禁用户
-* 设置版主（打算去掉）
-* 撤销版主（打算去掉）
 
-
-
-（打算去掉）
+  
 
 版主：
 
@@ -219,25 +227,13 @@ notice_user（一对一）
 
 notice_post（一对一）
 
+notice_section（一对一）
+
 notice_comment（一对一）
 
 
 
 （漏了一个搜索，记得加一下）（已完成）
-
- ![image-20220228094844253](C:\Users\25328\AppData\Roaming\Typora\typora-user-images\image-20220228094844253.png)
-
-(已完成)
-
- ![image-20220228095454638](C:\Users\25328\AppData\Roaming\Typora\typora-user-images\image-20220228095454638.png)
-
-（已完成）
-
- ![image-20220228101118744](C:\Users\25328\AppData\Roaming\Typora\typora-user-images\image-20220228101118744.png)
-
-（已完成）
-
-
 
 vue 传递参数 （已经知道）
 
@@ -436,7 +432,7 @@ docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
 //执行docker，docker ps查看进程号
 docker exec -it e7f8ffddae76 /bin/bash
 //进入mysql
-mysql -uroot -proot
+mysql -uroot -p123456
 //设置密码
 ALTER USER 'root'@'%' IDENTIFIED BY '123456';
 ```
@@ -486,3 +482,119 @@ user9
 123456
 
 123456
+
+
+
+**JWT**
+
+将用户信息加密到token里，不需要在服务端保存会话信息
+
+
+
+**nginx配置**
+
+```
+location / {
+    root   /home/server/dist;
+    index  index.html;
+    try_files $uri $uri/ /index.html;
+}
+```
+
+
+
+
+
+
+
+**local与服务器IP切换**
+
+后端
+
+corsconfig
+
+codegenerator
+
+application
+
+前端
+
+request js
+
+
+
+服务器测试完毕，以后只需在本地测试后上传，最后在测试一遍服务器即可
+
+
+
+
+
+
+
+
+
+
+
+
+
+**论文修改建议**
+
+* 删掉匿名功能
+* 修改表单
+* 添加前后端目录（图片和讲解）
+* 添加说明性图片
+
+
+
+**ppt建议**
+
+* 目录
+* 综述
+* 前端代码结构
+* 前端实现
+* 前端连接后端
+* 前端测试工具
+* 前端库
+* 后端代码结构
+* 后端连接前端、数据库
+* 后端测试工具
+* 后端库
+* 数据库表单结构
+* 腾讯云
+* 云工具介绍
+* 致谢
+
+做个20-30页左右 每页内容少一点 多放图
+
+
+
+记得改论文 做前端 做ppt
+
+明天一定要行动起来好吗o(╥﹏╥)o
+
+
+
+**改论文**
+
+* 去掉匿名
+
+
+
+**改前端**
+
+* 管理员添加管理界面
+* 评论界面添加回复
+
+
+
+**改数据库**
+
+* 去掉匿名
+* 去掉文件 
+
+
+
+```
+http://localhost:8080/swagger-ui.html
+```
+

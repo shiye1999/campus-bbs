@@ -33,8 +33,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if(one != null ){
             BeanUtil.copyProperties(one,userDTO,true);
             //设置token
-            String token = TokenUtils.genToken(one.getId().toString(),one.getPassword());
+            String token = TokenUtils.getToken(one.getId().toString(),one.getPassword());
             userDTO.setToken(token);
+            userDTO.setPassword("");
             return userDTO;
         }
         else{
@@ -48,6 +49,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if(one == null){
             User user = new User();
             BeanUtil.copyProperties(userDTO,user,true);
+            user.setPassword("");
             save(user);
             return user;
         }

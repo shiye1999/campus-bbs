@@ -6,7 +6,7 @@
                 <img :src="logoImg" height="90%" width="100%">
             </template>
         </el-menu-item>
-        <el-menu-item @click=clikcMenu(item) v-for="item in menu" :index="item.path" :key="item.path">
+        <el-menu-item v-for="item in menu" :index="item.path" :key="item.path">
             <i class="'el-icon-' + item.icon"></i>
             <span slot="title">{{item.label}}</span>
         </el-menu-item>
@@ -14,7 +14,8 @@
             <!-- 搜索栏 -->
             <div class="search-box">
                 <form action="" @submit.prevent="search">
-                    <input type="text" v-model="searchText" placeholder="搜索">
+                    <input type="text" v-model="searchText" placeholder="搜索帖子名字">
+                    <el-button icon="el-icon-search" size="mini"></el-button>
                 </form>
             </div>
             <el-dropdown trigger="click" size="mini">
@@ -24,11 +25,11 @@
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item>
                         <router-link to="/user/basicInfo">
-                            个人中心
+                            用户中心
                         </router-link>
                     </el-dropdown-item>
                     <el-dropdown-item>
-                        <span @click="logout">退出</span>
+                        <span @click="logout">注销</span>
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -41,9 +42,8 @@
         data() {
             return {
                 searchText: '',
-                activeIndex: '/home',
                 logoImg: require("../assets/logo.png"),
-                userImg: require("../assets/user.png"),
+                userImg: null,
                 user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")):{},
                 menu: [{
                         path: '/home/notice',
@@ -66,15 +66,12 @@
                 ]
             };
         },
+        created(){
+            this.userImg=this.user.avatarUrl
+        },
         methods: {
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
-            },
-            clickMenu(item) {
-                this.$router.push({
-                    name: item.name,
-                    activeIndex: item.path
-                })
             },
             logout(){
                 this.$router.push("/login")
@@ -105,11 +102,10 @@
 
         .search-box {
             float: left;
-            height: 30px;
+            height: 20x;
             margin: 15px 0 0 50px;
-            border-radius: 15px;
+            border-radius: 5px;
             background-color: #fff;
-            background: #fff url(../assets/search.png) no-repeat 5px 5px;
 
             input {
                 background: none;

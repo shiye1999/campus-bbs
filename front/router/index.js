@@ -19,17 +19,6 @@ const routes = [
         component: () => import("../views/Login/register.vue"),
     },
     {
-        path: '/help',
-        component: () => import("../views/Help/index.vue"),
-        children: [
-            {
-                path: 'help',
-                name: 'help',
-                component: () => import("../views/Help/help.vue")
-            }
-        ]
-    },
-    {
         path: '/home',
         name: 'Home',
         component: () => import("../views/Home/index.vue"),
@@ -37,7 +26,7 @@ const routes = [
             {
                 path: 'notice',
                 name: 'notice',
-                component: () => import("../views/Home/notice.vue"),
+                component: () => import("../views/Home/updateList.vue"),
             },
             {
                 path: 'upPost',
@@ -58,6 +47,16 @@ const routes = [
                 path: 'daily',
                 name: 'daily',
                 component: () => import("../views/Home/postList.vue"),
+            },
+            {
+                path: 'postMain',
+                name: 'postMain',
+                component: () => import("../views/Home/postMain.vue"),
+            },
+            {
+                path: 'searchList',
+                name: 'searchList',
+                component: () => import("../views/Home/searchList.vue"),
             },
         ]
     },
@@ -85,6 +84,27 @@ const routes = [
                 path: 'fanList',
                 name: 'fanList',
                 component: () => import("../views/User/fanList")
+            },
+            {
+                path: 'userControl',
+                name: 'userControl',
+                component: () => import("../views/User/subcribeList")
+            },
+            {
+                path: 'postControl',
+                name: 'postControl',
+                component: () => import("../views/User/fanList")
+            }
+        ]
+    },
+    {
+        path: '/help',
+        component: () => import("../views/Help/index.vue"),
+        children: [
+            {
+                path: 'help',
+                name: 'help',
+                component: () => import("../views/Help/help.vue")
             }
         ]
     }

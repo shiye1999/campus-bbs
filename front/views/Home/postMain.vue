@@ -12,14 +12,16 @@
                                         1L
                                     </div>
                                     <img class="user" src="../../src/assets/default.jpg" alt="">
-                                    <p>Ace</p>
+                                    <p>admin1</p>
+                                    <el-button type="warning" plain>关注</el-button>
+                                    <el-button type="primary" plain>回复</el-button>
                                 </div>
                                 <div class="right">
                                     <div class="sendTime">
-                                        发表于 2022-3-7 15:07
+                                        发表于 2022-4-20 15:07
                                     </div>
                                     <div class="content">
-                                        内容
+                                        第一条回复
                                     </div>
                                 </div>
                             </div>
@@ -28,17 +30,19 @@
                             <div class="postItem">
                                 <div class="left">
                                     <div class="no">
-                                        1L
+                                        2L
                                     </div>
                                     <img class="user" src="../../src/assets/default.jpg" alt="">
-                                    <p>Ace</p>
+                                    <p>admin1</p>
+                                    <el-button type="warning" plain>关注</el-button>
+                                    <el-button type="primary" plain>回复</el-button>
                                 </div>
                                 <div class="right">
                                     <div class="sendTime">
-                                        发表于 2022-3-7 15:07
+                                        发表于 2022-4-20 15:07
                                     </div>
                                     <div class="content">
-                                        内容
+                                        第二条回复
                                     </div>
                                 </div>
                             </div>
@@ -47,17 +51,19 @@
                             <div class="postItem">
                                 <div class="left">
                                     <div class="no">
-                                        1L
+                                        3L
                                     </div>
                                     <img class="user" src="../../src/assets/default.jpg" alt="">
-                                    <p>Ace</p>
+                                    <p>匿名用户</p>
+                                    <el-button type="warning" plain>关注</el-button>
+                                    <el-button type="primary" plain>回复</el-button>
                                 </div>
                                 <div class="right">
                                     <div class="sendTime">
                                         发表于 2022-3-7 15:07
                                     </div>
                                     <div class="content">
-                                        内容
+                                        第三条回复
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +141,7 @@
 
     .left {
         width: 200px;
-        height: 216px;
+        height: 256px;
         padding: 0px;
         float: left;
         text-align: center;
@@ -152,9 +158,13 @@
     }
 
     .right {
-        min-height: 216px;
+        min-height: 256px;
         background-color: #fffbf0;
         overflow: hidden;
+        padding: 0 6px;
+    }
+
+    .right .content{
         padding: 0 6px;
     }
 
@@ -164,7 +174,6 @@
         border-bottom: #ccc dashed;
     }
 
-    .right .content {}
 
     ul {
         margin: 0;

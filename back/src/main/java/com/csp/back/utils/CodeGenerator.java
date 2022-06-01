@@ -28,7 +28,7 @@ public class CodeGenerator {
                     builder.entityBuilder().enableLombok();
                     builder.controllerBuilder().enableHyphenStyle() //开启驼峰
                             .enableRestStyle();//开启@ReatControleer
-                    builder.addInclude("user") // 设置需要生成的表名
+                    builder.addInclude("post") // 设置需要生成的表名
                             .addTablePrefix("t_", "c_"); // 设置过滤表前缀
                 })
                 //.templateEngine(new FreemarkerTemplateEngine()) // 使用Velocity引擎模板

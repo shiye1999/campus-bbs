@@ -6,17 +6,11 @@
                     <el-form-item label="帖子名称">
                         <el-input v-model="form.name"></el-input>
                     </el-form-item>
-                    <el-form-item label="活动区域">
+                    <el-form-item label="所属板块">
                         <el-select v-model="form.region" placeholder="所属板块">
                             <el-option label="学术研讨" value="study"></el-option>
                             <el-option label="日常生活" value="daily"></el-option>
                         </el-select>
-                    </el-form-item>
-                    <el-form-item label="允许匿名">
-                        <el-switch v-model="form.allowHidden"></el-switch>
-                    </el-form-item>
-                    <el-form-item label="开启匿名">
-                        <el-switch v-model="form.hidden"></el-switch>
                     </el-form-item>
                     <el-form-item label="发表内容">
                         <el-input type="textarea" v-model="form.content" :rows="8"></el-input>
@@ -40,7 +34,6 @@
                     name: '',
                     region: '',
                     section: '',
-                    allowHidden:false,
                     hidden: false,
                     type: [],
                     content: ''
@@ -53,7 +46,9 @@
             handleChange(value) {
                 console.log(value);
             },
-            onSubmit() {},
+            onSubmit() {
+                
+            },
             comeBack() {
                 undefined
                 this.$router.go(-1);
